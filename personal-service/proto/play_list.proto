@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package personalservice;
+
+service UserPlaylist {
+  // Spotify IDに紐づくPlayListを返却するサービスを定義
+  rpc GetUserPlaylist (PlaylistRequest) returns (PlaylistReply) {}
+}
+
+// プレイリストを取得するためのパラメータを定義
+message PlaylistRequest {
+  int64 id = 1;
+  string token = 2;
+}
+
+// プレイリスト取得後のパラメータを定義
+message PlaylistReply {
+  string url = 1;
+  string name = 2;
+  string account = 3;
+  int64 track_num = 4;
+  string track_url = 5;
+}
