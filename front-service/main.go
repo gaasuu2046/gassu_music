@@ -86,7 +86,7 @@ func GetAiring(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("err")
 		panic(err.Error())
 	}
-	fmt.Println(airingID)
+	fmt.Println(airing)
 	json.NewEncoder(w).Encode(airing)
 }
 
