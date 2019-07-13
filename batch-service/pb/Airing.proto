@@ -1,5 +1,4 @@
 syntax = "proto3";
-package example;
 
 
 import "google/api/annotations.proto";
@@ -7,7 +6,7 @@ import "google/api/annotations.proto";
 service Airing {
   rpc GetAiring (GetAiringMessage) returns (AiringResponse) {
     option (google.api.http) = {
-      get: "/v1/rest/airing/{id}"
+      get: "/v1/rest/airing/{airing_id}"
     };
   }
 }
