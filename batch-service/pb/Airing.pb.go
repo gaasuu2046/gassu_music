@@ -6,11 +6,12 @@ package Airing
 import (
 	context "context"
 	fmt "fmt"
+	math "math"
+
 	proto "github.com/golang/protobuf/proto"
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
-	math "math"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -24,111 +25,102 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type GetMyCatMessage struct {
-	TargetCat            string   `protobuf:"bytes,1,opt,name=target_cat,json=targetCat,proto3" json:"target_cat,omitempty"`
+type GetAiringMessage struct {
+	AiringId             string   `protobuf:"bytes,1,opt,name=airing_id,json=airingId,proto3" json:"airing_id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *GetMyCatMessage) Reset()         { *m = GetMyCatMessage{} }
-func (m *GetMyCatMessage) String() string { return proto.CompactTextString(m) }
-func (*GetMyCatMessage) ProtoMessage()    {}
-func (*GetMyCatMessage) Descriptor() ([]byte, []int) {
+func (m *GetAiringMessage) Reset()         { *m = GetAiringMessage{} }
+func (m *GetAiringMessage) String() string { return proto.CompactTextString(m) }
+func (*GetAiringMessage) ProtoMessage()    {}
+func (*GetAiringMessage) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5ee75775d332f7ce, []int{0}
 }
 
-func (m *GetMyCatMessage) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetMyCatMessage.Unmarshal(m, b)
+func (m *GetAiringMessage) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_GetAiringMessage.Unmarshal(m, b)
 }
-func (m *GetMyCatMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetMyCatMessage.Marshal(b, m, deterministic)
+func (m *GetAiringMessage) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_GetAiringMessage.Marshal(b, m, deterministic)
 }
-func (m *GetMyCatMessage) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetMyCatMessage.Merge(m, src)
+func (m *GetAiringMessage) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_GetAiringMessage.Merge(m, src)
 }
-func (m *GetMyCatMessage) XXX_Size() int {
-	return xxx_messageInfo_GetMyCatMessage.Size(m)
+func (m *GetAiringMessage) XXX_Size() int {
+	return xxx_messageInfo_GetAiringMessage.Size(m)
 }
-func (m *GetMyCatMessage) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetMyCatMessage.DiscardUnknown(m)
+func (m *GetAiringMessage) XXX_DiscardUnknown() {
+	xxx_messageInfo_GetAiringMessage.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_GetMyCatMessage proto.InternalMessageInfo
+var xxx_messageInfo_GetAiringMessage proto.InternalMessageInfo
 
-func (m *GetMyCatMessage) GetTargetCat() string {
+func (m *GetAiringMessage) GetAiringId() string {
 	if m != nil {
-		return m.TargetCat
+		return m.AiringId
 	}
 	return ""
 }
 
-type MyCatResponse struct {
-	Name                 string   `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Kind                 string   `protobuf:"bytes,2,opt,name=kind,proto3" json:"kind,omitempty"`
+type AiringResponse struct {
+	AiringJson           string   `protobuf:"bytes,1,opt,name=airing_json,json=airingJson,proto3" json:"airing_json,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *MyCatResponse) Reset()         { *m = MyCatResponse{} }
-func (m *MyCatResponse) String() string { return proto.CompactTextString(m) }
-func (*MyCatResponse) ProtoMessage()    {}
-func (*MyCatResponse) Descriptor() ([]byte, []int) {
+func (m *AiringResponse) Reset()         { *m = AiringResponse{} }
+func (m *AiringResponse) String() string { return proto.CompactTextString(m) }
+func (*AiringResponse) ProtoMessage()    {}
+func (*AiringResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5ee75775d332f7ce, []int{1}
 }
 
-func (m *MyCatResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MyCatResponse.Unmarshal(m, b)
+func (m *AiringResponse) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_AiringResponse.Unmarshal(m, b)
 }
-func (m *MyCatResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MyCatResponse.Marshal(b, m, deterministic)
+func (m *AiringResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_AiringResponse.Marshal(b, m, deterministic)
 }
-func (m *MyCatResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MyCatResponse.Merge(m, src)
+func (m *AiringResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_AiringResponse.Merge(m, src)
 }
-func (m *MyCatResponse) XXX_Size() int {
-	return xxx_messageInfo_MyCatResponse.Size(m)
+func (m *AiringResponse) XXX_Size() int {
+	return xxx_messageInfo_AiringResponse.Size(m)
 }
-func (m *MyCatResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_MyCatResponse.DiscardUnknown(m)
+func (m *AiringResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_AiringResponse.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_MyCatResponse proto.InternalMessageInfo
+var xxx_messageInfo_AiringResponse proto.InternalMessageInfo
 
-func (m *MyCatResponse) GetName() string {
+func (m *AiringResponse) GetAiringJson() string {
 	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *MyCatResponse) GetKind() string {
-	if m != nil {
-		return m.Kind
+		return m.AiringJson
 	}
 	return ""
 }
 
 func init() {
-	proto.RegisterType((*GetMyCatMessage)(nil), "GetMyCatMessage")
-	proto.RegisterType((*MyCatResponse)(nil), "MyCatResponse")
+	proto.RegisterType((*GetAiringMessage)(nil), "GetAiringMessage")
+	proto.RegisterType((*AiringResponse)(nil), "AiringResponse")
 }
 
 func init() { proto.RegisterFile("Airing.proto", fileDescriptor_5ee75775d332f7ce) }
 
 var fileDescriptor_5ee75775d332f7ce = []byte{
-	// 152 bytes of a gzipped FileDescriptorProto
+	// 138 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x71, 0xcc, 0x2c, 0xca,
-	0xcc, 0x4b, 0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0x32, 0xe0, 0xe2, 0x77, 0x4f, 0x2d, 0xf1,
-	0xad, 0x74, 0x4e, 0x2c, 0xf1, 0x4d, 0x2d, 0x2e, 0x4e, 0x4c, 0x4f, 0x15, 0x92, 0xe5, 0xe2, 0x2a,
-	0x49, 0x2c, 0x4a, 0x4f, 0x2d, 0x89, 0x4f, 0x4e, 0x2c, 0x91, 0x60, 0x54, 0x60, 0xd4, 0xe0, 0x0c,
-	0xe2, 0x84, 0x88, 0x38, 0x27, 0x96, 0x28, 0x99, 0x73, 0xf1, 0x82, 0x95, 0x07, 0xa5, 0x16, 0x17,
-	0xe4, 0xe7, 0x15, 0xa7, 0x0a, 0x09, 0x71, 0xb1, 0xe4, 0x25, 0xe6, 0xa6, 0x42, 0x55, 0x82, 0xd9,
-	0x20, 0xb1, 0xec, 0xcc, 0xbc, 0x14, 0x09, 0x26, 0x88, 0x18, 0x88, 0x6d, 0x64, 0xca, 0xc5, 0xec,
-	0x9c, 0x58, 0x22, 0xa4, 0xc7, 0xc5, 0x01, 0xb3, 0x51, 0x48, 0x40, 0x0f, 0xcd, 0x72, 0x29, 0x3e,
-	0x3d, 0x14, 0xc3, 0x95, 0x18, 0x92, 0xd8, 0xc0, 0x0e, 0x35, 0x06, 0x04, 0x00, 0x00, 0xff, 0xff,
-	0x9c, 0xba, 0xc8, 0xbb, 0xb8, 0x00, 0x00, 0x00,
+	0xcc, 0x4b, 0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x57, 0xd2, 0xe7, 0x12, 0x70, 0x4f, 0x2d, 0x81,
+	0x08, 0xf9, 0xa6, 0x16, 0x17, 0x27, 0xa6, 0xa7, 0x0a, 0x49, 0x73, 0x71, 0x26, 0x82, 0x05, 0xe2,
+	0x33, 0x53, 0x24, 0x18, 0x15, 0x18, 0x35, 0x38, 0x83, 0x38, 0x20, 0x02, 0x9e, 0x29, 0x4a, 0x86,
+	0x5c, 0x7c, 0x10, 0xd5, 0x41, 0xa9, 0xc5, 0x05, 0xf9, 0x79, 0xc5, 0xa9, 0x42, 0xf2, 0x5c, 0xdc,
+	0x50, 0xe5, 0x59, 0xc5, 0xf9, 0x79, 0x50, 0x0d, 0x5c, 0x10, 0x21, 0xaf, 0xe2, 0xfc, 0x3c, 0x23,
+	0x6b, 0x2e, 0x36, 0x88, 0x16, 0x21, 0x43, 0x2e, 0x4e, 0xb8, 0x6d, 0x42, 0x82, 0x7a, 0xe8, 0x36,
+	0x4b, 0xf1, 0xeb, 0xa1, 0x9a, 0xad, 0xc4, 0x90, 0xc4, 0x06, 0x76, 0xa7, 0x31, 0x20, 0x00, 0x00,
+	0xff, 0xff, 0xbc, 0xba, 0x37, 0x54, 0xb7, 0x00, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -139,72 +131,72 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// CatClient is the client API for Cat service.
+// AiringClient is the client API for Airing service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type CatClient interface {
-	GetMyCat(ctx context.Context, in *GetMyCatMessage, opts ...grpc.CallOption) (*MyCatResponse, error)
+type AiringClient interface {
+	GetAiring(ctx context.Context, in *GetAiringMessage, opts ...grpc.CallOption) (*AiringResponse, error)
 }
 
-type catClient struct {
+type airingClient struct {
 	cc *grpc.ClientConn
 }
 
-func NewCatClient(cc *grpc.ClientConn) CatClient {
-	return &catClient{cc}
+func NewAiringClient(cc *grpc.ClientConn) AiringClient {
+	return &airingClient{cc}
 }
 
-func (c *catClient) GetMyCat(ctx context.Context, in *GetMyCatMessage, opts ...grpc.CallOption) (*MyCatResponse, error) {
-	out := new(MyCatResponse)
-	err := c.cc.Invoke(ctx, "/Cat/GetMyCat", in, out, opts...)
+func (c *airingClient) GetAiring(ctx context.Context, in *GetAiringMessage, opts ...grpc.CallOption) (*AiringResponse, error) {
+	out := new(AiringResponse)
+	err := c.cc.Invoke(ctx, "/Airing/GetAiring", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// CatServer is the server API for Cat service.
-type CatServer interface {
-	GetMyCat(context.Context, *GetMyCatMessage) (*MyCatResponse, error)
+// AiringServer is the server API for Airing service.
+type AiringServer interface {
+	GetAiring(context.Context, *GetAiringMessage) (*AiringResponse, error)
 }
 
-// UnimplementedCatServer can be embedded to have forward compatible implementations.
-type UnimplementedCatServer struct {
+// UnimplementedAiringServer can be embedded to have forward compatible implementations.
+type UnimplementedAiringServer struct {
 }
 
-func (*UnimplementedCatServer) GetMyCat(ctx context.Context, req *GetMyCatMessage) (*MyCatResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetMyCat not implemented")
+func (*UnimplementedAiringServer) GetAiring(ctx context.Context, req *GetAiringMessage) (*AiringResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAiring not implemented")
 }
 
-func RegisterCatServer(s *grpc.Server, srv CatServer) {
-	s.RegisterService(&_Cat_serviceDesc, srv)
+func RegisterAiringServer(s *grpc.Server, srv AiringServer) {
+	s.RegisterService(&_Airing_serviceDesc, srv)
 }
 
-func _Cat_GetMyCat_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetMyCatMessage)
+func _Airing_GetAiring_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAiringMessage)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CatServer).GetMyCat(ctx, in)
+		return srv.(AiringServer).GetAiring(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/Cat/GetMyCat",
+		FullMethod: "/Airing/GetAiring",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CatServer).GetMyCat(ctx, req.(*GetMyCatMessage))
+		return srv.(AiringServer).GetAiring(ctx, req.(*GetAiringMessage))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _Cat_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "Cat",
-	HandlerType: (*CatServer)(nil),
+var _Airing_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "Airing",
+	HandlerType: (*AiringServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetMyCat",
-			Handler:    _Cat_GetMyCat_Handler,
+			MethodName: "GetAiring",
+			Handler:    _Airing_GetAiring_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
